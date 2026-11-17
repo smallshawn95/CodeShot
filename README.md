@@ -8,7 +8,6 @@
 CodeShot.xcodeproj/    Xcode 專案，雙擊就能開
 CodeShot/              6 個 Swift 檔 + Assets.xcassets + Info.plist
 CodeShot/Fonts/        Fira Code、JetBrains Mono（已註冊，選單直接可用）
-preview/               HTML 互動預覽（用瀏覽器開，不需要 Mac）
 README.md
 ```
 
@@ -62,7 +61,6 @@ README.md
 | 檔案／資料夾 | 原因 |
 |---|---|
 | `README.md` | 說明文件，不是程式碼 |
-| `preview/` 整個資料夾 | HTML 預覽用，拖進去只會被當成專案資源 |
 | 專案原本的 `Assets.xcassets` | 不要覆蓋 |
 
 ### 兩個常見卡點
