@@ -6,7 +6,8 @@
 
 ```
 CodeShot.xcodeproj/    Xcode 專案，雙擊就能開
-CodeShot/              6 個 Swift 檔 + Assets.xcassets
+CodeShot/              6 個 Swift 檔 + Assets.xcassets + Info.plist
+CodeShot/Fonts/        Fira Code、JetBrains Mono（已註冊，選單直接可用）
 preview/               HTML 互動預覽（用瀏覽器開，不需要 Mac）
 README.md
 ```
@@ -85,6 +86,8 @@ README.md
 | `CodeLanguage.swift` | 8 種語言、副檔名、Hello world 範例 |
 | `ResultView.swift` | 結果頁（顯示 + 分享） |
 | `Assets.xcassets` | AppIcon / AccentColor 佔位（沒有圖也可以編譯） |
+| `Info.plist` | 註冊自訂字型（`UIAppFonts`）與其他基本設定 |
+| `Fonts/` | Fira Code、JetBrains Mono 的 .ttf 與授權檔 |
 
 資料流：
 
@@ -123,32 +126,37 @@ UIImage → ResultView
 
 ## 五、字型
 
-### iOS 內建（選了就一定有效）
+選單共 8 種：
 
-`SF Mono`（系統等寬）、`Menlo`、`Monaco`、`Courier New`、`Andale Mono`、`系統字型`
+| 種類 | 字型 | 需要準備什麼 |
+|---|---|---|
+| iOS 內建 | SF Mono、Menlo、Monaco、Courier New、Andale Mono、系統字型 | 不用，選了就有 |
+| 已附在專案 | Fira Code、JetBrains Mono | 不用，已設定完成 |
 
-### Fira Code / JetBrains Mono / Source Code Pro 這類
+### 附帶的兩種字型是怎麼接上去的
 
-iOS **沒有內建**，要三步：
+這三件事都已經做完了，明天 clone 下來直接選就能用：
 
-1. 把 `.ttf`（或 `.otf`）拖進 Xcode 專案，勾 `Copy items if needed`、`Add to targets`
-2. `Info.plist` 新增 `UIAppFonts`（Array），填入檔名：
-   ```
-   UIAppFonts
-     ├─ FiraCode-Regular.ttf
-     └─ FiraCode-Bold.ttf
-   ```
-3. 到 `CodeStyle.swift` 的 `CodeFontFamily` 加一個 case：
-   ```swift
-   case firaCode
-   ...
-   case .firaCode:
-       return .custom("FiraCode-Regular", size: size).weight(weight)
-   ```
+1. 字型檔放在 `CodeShot/Fonts/`，並加入 **Build Phases → Copy Bundle Resources**
+2. `CodeShot/Info.plist` 的 `UIAppFonts` 已列出四個檔名
+3. `CodeStyle.swift` 的 `CodeFontFamily` 已加好 case，並**直接指定 PostScript 名稱**
+   `FiraCode-Regular` / `FiraCode-Bold` / `JetBrainsMono-Regular` / `JetBrainsMono-Bold`
 
-**字型名稱打錯不會報錯**，只會默默變回系統字型，所以要用「字型書（Font Book）」查正確名稱。
+> 為什麼不靠 `.weight(.bold)`？靜態字型不一定會自動換成 Bold 字面，直接指定 PostScript 名稱最保險。
 
-`preview/codeshot-preview.html` 裡有先把這 4 種字型放進選單，可以先用瀏覽器看效果，再決定要不要花時間加。
+### 想再加字型（例如 IBM Plex Mono）
+
+1. `.ttf` 拖進 Xcode 的 `Fonts` group → ✅ Copy items if needed、✅ Add to targets
+2. `Info.plist` 的 `UIAppFonts` 陣列補上檔名（含 `.ttf`）
+3. `CodeFontFamily` 加一個 case，字型名稱填 **PostScript 名稱**
+
+PostScript 名稱要用「字型書（Font Book）→ 右鍵 → 顯示字型資訊」查，**不是檔名**。
+名稱打錯不會報錯，只會默默變回系統字型。
+
+### 授權
+
+- Fira Code、JetBrains Mono 都是 SIL Open Font License 1.1，可以隨 App 一起散布。
+- 授權檔放在 `CodeShot/Fonts/LICENSE-*.txt`，公開發佈時建議一起附上。
 
 ---
 

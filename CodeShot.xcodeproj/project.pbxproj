@@ -14,6 +14,10 @@
 		1A2B3C4D5E6F7A8B9C0D0015 /* CodeLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7A8B9C0D0005 /* CodeLanguage.swift */; };
 		1A2B3C4D5E6F7A8B9C0D0016 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7A8B9C0D0006 /* ResultView.swift */; };
 		1A2B3C4D5E6F7A8B9C0D0017 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7A8B9C0D0007 /* Assets.xcassets */; };
+		1A2B3C4D5E6F7A8B9C0D0021 /* FiraCode-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7A8B9C0D0031 /* FiraCode-Regular.ttf */; };
+		1A2B3C4D5E6F7A8B9C0D0022 /* FiraCode-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7A8B9C0D0032 /* FiraCode-Bold.ttf */; };
+		1A2B3C4D5E6F7A8B9C0D0023 /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7A8B9C0D0033 /* JetBrainsMono-Regular.ttf */; };
+		1A2B3C4D5E6F7A8B9C0D0024 /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F7A8B9C0D0034 /* JetBrainsMono-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,11 @@
 		1A2B3C4D5E6F7A8B9C0D0005 /* CodeLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeLanguage.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7A8B9C0D0006 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7A8B9C0D0007 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A2B3C4D5E6F7A8B9C0D0031 /* FiraCode-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraCode-Regular.ttf"; sourceTree = "<group>"; };
+		1A2B3C4D5E6F7A8B9C0D0032 /* FiraCode-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraCode-Bold.ttf"; sourceTree = "<group>"; };
+		1A2B3C4D5E6F7A8B9C0D0033 /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
+		1A2B3C4D5E6F7A8B9C0D0034 /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
+		1A2B3C4D5E6F7A8B9C0D0035 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A2B3C4D5E6F7A8B9C0D0020 /* CodeShot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeShot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -56,8 +65,21 @@
 				1A2B3C4D5E6F7A8B9C0D0005 /* CodeLanguage.swift */,
 				1A2B3C4D5E6F7A8B9C0D0006 /* ResultView.swift */,
 				1A2B3C4D5E6F7A8B9C0D0007 /* Assets.xcassets */,
+				1A2B3C4D5E6F7A8B9C0D0051 /* Fonts */,
+				1A2B3C4D5E6F7A8B9C0D0035 /* Info.plist */,
 			);
 			path = CodeShot;
+			sourceTree = "<group>";
+		};
+		1A2B3C4D5E6F7A8B9C0D0051 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1A2B3C4D5E6F7A8B9C0D0031 /* FiraCode-Regular.ttf */,
+				1A2B3C4D5E6F7A8B9C0D0032 /* FiraCode-Bold.ttf */,
+				1A2B3C4D5E6F7A8B9C0D0033 /* JetBrainsMono-Regular.ttf */,
+				1A2B3C4D5E6F7A8B9C0D0034 /* JetBrainsMono-Bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		1A2B3C4D5E6F7A8B9C0D0060 /* Products */ = {
@@ -127,6 +149,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A2B3C4D5E6F7A8B9C0D0017 /* Assets.xcassets in Resources */,
+				1A2B3C4D5E6F7A8B9C0D0021 /* FiraCode-Regular.ttf in Resources */,
+				1A2B3C4D5E6F7A8B9C0D0022 /* FiraCode-Bold.ttf in Resources */,
+				1A2B3C4D5E6F7A8B9C0D0023 /* JetBrainsMono-Regular.ttf in Resources */,
+				1A2B3C4D5E6F7A8B9C0D0024 /* JetBrainsMono-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,12 +302,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CodeShot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,12 +325,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CodeShot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

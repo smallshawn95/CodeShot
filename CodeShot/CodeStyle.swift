@@ -48,25 +48,25 @@ struct CodeStyle {
 
 /// 可選的等寬字型。
 ///
-/// 這裡列的都是 iOS 內建、不需要另外安裝的字型，
-/// 所以每一種選了都一定看得到效果。
+/// 前 6 種是 iOS 內建的。Fira Code 和 JetBrains Mono 的 .ttf 已經放在
+/// `CodeShot/Fonts/`，也已經加進 Copy Bundle Resources、並在
+/// Info.plist 的 UIAppFonts 註冊過，所以選單選了就有效。
 ///
-/// 想加 Fira Code / JetBrains Mono 這類字型的話，只要三步：
-/// 1. 把字型的 .ttf 拖進 Xcode 專案（勾 Copy items if needed、Add to target）。
-/// 2. 在 Info.plist 加一把 `UIAppFonts` 陣列，填入檔名，例如 `FiraCode-Regular.ttf`。
-/// 3. 在下面加一個 case，並用 PostScript 名稱建立字型：
-///    ```
-///    case firaCode
-///    ...
-///    case .firaCode: return .custom("FiraCode-Regular", size: size).weight(weight)
-///    ```
-///    名字打錯不會報錯，只會默默變回系統字型，所以要對照字型書（Font Book）確認名稱。
+/// 之後想再加字型（例如 IBM Plex Mono）只要三步：
+/// 1. 把 .ttf 拖進 Xcode 的 Fonts group（勾 Copy items if needed、Add to targets）。
+/// 2. 到 Info.plist 的 UIAppFonts 陣列補上檔名。
+/// 3. 下面加一個 case，填入該字型的 PostScript 名稱。
+///
+/// 注意：PostScript 名稱不是檔名，要用「字型書（Font Book）」查。
+/// 名稱打錯不會報錯，只會默默變回系統字型。
 enum CodeFontFamily: String, CaseIterable, Identifiable {
     case sfMono
     case menlo
     case monaco
     case courierNew
     case andaleMono
+    case firaCode
+    case jetBrainsMono
     case system
 
     var id: String { rawValue }
@@ -78,6 +78,8 @@ enum CodeFontFamily: String, CaseIterable, Identifiable {
         case .monaco: return "Monaco"
         case .courierNew: return "Courier New"
         case .andaleMono: return "Andale Mono"
+        case .firaCode: return "Fira Code"
+        case .jetBrainsMono: return "JetBrains Mono"
         case .system: return "系統字型"
         }
     }
@@ -96,6 +98,11 @@ enum CodeFontFamily: String, CaseIterable, Identifiable {
             return .custom("Courier New", size: size).weight(weight)
         case .andaleMono:
             return .custom("Andale Mono", size: size).weight(weight)
+        case .firaCode:
+            // 這兩個是自己附帶的字型，直接指定 PostScript 名稱最保險。
+            return .custom(isBold ? "FiraCode-Bold" : "FiraCode-Regular", size: size)
+        case .jetBrainsMono:
+            return .custom(isBold ? "JetBrainsMono-Bold" : "JetBrainsMono-Regular", size: size)
         case .system:
             return .system(size: size, weight: weight, design: .default)
         }
