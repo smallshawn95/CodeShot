@@ -194,7 +194,7 @@ struct ContentView: View {
         }
     }
 
-    // MARK: - 生成
+    // MARK: - 輸出按鈕
 
     private var generateSection: some View {
         Section {
@@ -211,7 +211,7 @@ struct ContentView: View {
         }
     }
 
-    // MARK: - 產生圖片
+    // MARK: - 圖片輸出
 
     @MainActor
     private func generate() {
@@ -220,7 +220,7 @@ struct ContentView: View {
             return
         }
 
-        // 固定寬度 640，這樣不同裝置產生的圖片比例才會一致。
+        // 以固定寬度在各裝置輸出卡片。
         let card = CodeCardView(style: style).frame(width: 640)
         let renderer = ImageRenderer(content: card)
         renderer.scale = 3

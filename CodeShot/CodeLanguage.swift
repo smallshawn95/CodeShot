@@ -1,11 +1,6 @@
 import Foundation
 
-/// 程式語言種類。
-///
-/// 目前不做語法高亮，所以這個列舉的用途是：
-/// 1. 顯示在 Picker 裡讓使用者選擇。
-/// 2. 決定「載入範例」時要放哪一段程式碼。
-/// 3. 決定卡片上的副檔名與預設檔名。
+/// 定義語言選項、檔名規則與範例內容。
 enum CodeLanguage: String, CaseIterable, Identifiable {
     case swift
     case c
@@ -31,7 +26,7 @@ enum CodeLanguage: String, CaseIterable, Identifiable {
         }
     }
 
-    /// 卡片上顯示的副檔名，純文字不帶副檔名。
+    /// 卡片檔名使用的副檔名。
     var fileExtension: String {
         switch self {
         case .swift: return "swift"
@@ -41,28 +36,25 @@ enum CodeLanguage: String, CaseIterable, Identifiable {
         case .java: return "java"
         case .javascript: return "js"
         case .rust: return "rs"
-        case .plainText: return ""
+        case .plainText: return "txt"
         }
     }
 
-    /// 按「載入範例」時，檔名要跟著換成該語言習慣的名稱。
+    /// 從表單載入範例時使用的主檔名。
     var defaultBaseName: String {
         switch self {
-        case .swift: return "Hello"
-        case .c: return "hello"
-        case .cpp: return "hello"
-        case .python: return "hello"
+        case .swift: return "Main"
+        case .c: return "main"
+        case .cpp: return "main"
+        case .python: return "main"
         case .java: return "Main"
-        case .javascript: return "hello"
+        case .javascript: return "main"
         case .rust: return "main"
-        case .plainText: return "note"
+        case .plainText: return "main"
         }
     }
 
-    /// 每個語言都輸出 Hello, world!，方便互相對照。
-    ///
-    /// 注意：Swift 字串裡的 `\\n` 代表畫面上要看到一個反斜線加 n，
-    /// 所以 C 的 printf 要這樣寫，才會顯示 `printf("Hello, world!\n");`。
+    /// 各語言的「Hello, world!」範例。
     var sampleCode: String {
         switch self {
         case .swift:
@@ -130,8 +122,6 @@ enum CodeLanguage: String, CaseIterable, Identifiable {
         case .plainText:
             return """
             Hello, world!
-
-            這是一段純文字，不會有任何語法著色。
             """
         }
     }

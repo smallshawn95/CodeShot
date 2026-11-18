@@ -1,20 +1,15 @@
 import SwiftUI
 
-/// 一張程式碼截圖的所有外觀設定。
-///
-/// 把所有設定集中在一個 struct 裡，好處是：
-/// - 預覽卡片只要接收一個參數就好。
-/// - 「重設」只要 `style = CodeStyle()` 一行。
-/// - 之後要存檔（Codable）也很容易加。
+/// 程式碼卡片的內容與外觀設定。
 struct CodeStyle {
     // 內容
     var code: String = CodeLanguage.swift.sampleCode
 
-    /// 使用者只輸入主檔名，不含副檔名。
-    var baseName: String = "Hello"
+    /// 檔名欄位的原始輸入。
+    var baseName: String = "main"
     var language: CodeLanguage = .swift
 
-    /// 卡片標題列真正顯示的檔名，副檔名由語言決定。
+    /// 卡片標題列顯示的完整檔名。
     var fileName: String {
         let name = baseName.trimmingCharacters(in: .whitespacesAndNewlines)
         let shown = name.isEmpty ? "未命名" : name
@@ -22,7 +17,7 @@ struct CodeStyle {
 
         guard !ext.isEmpty else { return shown }
 
-        // 使用者如果自己打了副檔名，就不要重複加一次。
+        // 保留已含相同副檔名的檔名。
         if shown.lowercased().hasSuffix("." + ext) { return shown }
         return shown + "." + ext
     }
@@ -46,19 +41,7 @@ struct CodeStyle {
     var cornerRadius: Double = 20
 }
 
-/// 可選的等寬字型。
-///
-/// 前 6 種是 iOS 內建的。Fira Code 和 JetBrains Mono 的 .ttf 已經放在
-/// `CodeShot/Fonts/`，也已經加進 Copy Bundle Resources、並在
-/// Info.plist 的 UIAppFonts 註冊過，所以選單選了就有效。
-///
-/// 之後想再加字型（例如 IBM Plex Mono）只要三步：
-/// 1. 把 .ttf 拖進 Xcode 的 Fonts group（勾 Copy items if needed、Add to targets）。
-/// 2. 到 Info.plist 的 UIAppFonts 陣列補上檔名。
-/// 3. 下面加一個 case，填入該字型的 PostScript 名稱。
-///
-/// 注意：PostScript 名稱不是檔名，要用「字型書（Font Book）」查。
-/// 名稱打錯不會報錯，只會默默變回系統字型。
+/// 卡片可選用的字型。
 enum CodeFontFamily: String, CaseIterable, Identifiable {
     case sfMono
     case menlo
@@ -99,7 +82,7 @@ enum CodeFontFamily: String, CaseIterable, Identifiable {
         case .andaleMono:
             return .custom("Andale Mono", size: size).weight(weight)
         case .firaCode:
-            // 這兩個是自己附帶的字型，直接指定 PostScript 名稱最保險。
+            // 隨附字型以 PostScript 名稱選擇對應字重。
             return .custom(isBold ? "FiraCode-Bold" : "FiraCode-Regular", size: size)
         case .jetBrainsMono:
             return .custom(isBold ? "JetBrainsMono-Bold" : "JetBrainsMono-Regular", size: size)

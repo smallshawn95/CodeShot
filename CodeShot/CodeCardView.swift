@@ -1,12 +1,6 @@
 import SwiftUI
 
-/// 真正被「截圖」的那張卡片。
-///
-/// 這個 View 同時用在兩個地方：
-/// 1. 主畫面的即時預覽。
-/// 2. `ImageRenderer` 產生 UIImage 時的內容。
-///
-/// 因為兩邊共用同一個 View，所以「看到的」就等於「輸出的」。
+/// 即時預覽與圖片輸出共用的程式碼卡片。
 struct CodeCardView: View {
     let style: CodeStyle
 
@@ -14,9 +8,7 @@ struct CodeCardView: View {
         style.code.components(separatedBy: "\n")
     }
 
-    /// 行號用「一個多行 Text」畫，而不是 ForEach 一堆 Text。
-    /// 這樣行號和程式碼用的是同一個字型與 lineSpacing，
-    /// 每一行的基準線才會對得整整齊齊。
+    /// 產生多行行號文字，讓行號與程式碼共用字型和行距。
     private var numberColumn: String {
         guard !lines.isEmpty else { return "1" }
         return lines.indices.map { "\($0 + 1)" }.joined(separator: "\n")

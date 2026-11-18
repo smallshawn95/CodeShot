@@ -1,12 +1,7 @@
 import SwiftUI
 import UIKit
 
-/// 生成結果頁。
-///
-/// 目前只負責「顯示」和「分享」。
-/// 之後要加存相簿，只要在這一頁多一顆按鈕呼叫
-/// `UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)` 即可，
-/// 並記得在 Info.plist 加上 NSPhotoLibraryAddUsageDescription。
+/// 顯示輸出的卡片，並提供系統分享。
 struct ResultView: View {
     let image: UIImage
 
